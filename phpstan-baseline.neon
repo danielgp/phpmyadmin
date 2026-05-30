@@ -187,24 +187,9 @@ parameters:
 			path: src/Bookmarks/Bookmark.php
 
 		-
-			message: '''
-				#^Call to deprecated method getInstance\(\) of class PhpMyAdmin\\Config\:
-				Use dependency injection instead\.$#
-			'''
-			identifier: staticMethod.deprecated
-			count: 1
-			path: src/Bookmarks/BookmarkRepository.php
-
-		-
 			message: '#^Parameter \#1 \$row of method PhpMyAdmin\\Bookmarks\\BookmarkRepository\:\:createFromRow\(\) expects array\<string\>, array\<string\|null\> given\.$#'
 			identifier: argument.type
 			count: 3
-			path: src/Bookmarks/BookmarkRepository.php
-
-		-
-			message: '#^Parameter \#2 \$bookmarkFeature of class PhpMyAdmin\\Bookmarks\\Bookmark constructor expects PhpMyAdmin\\ConfigStorage\\Features\\BookmarkFeature, PhpMyAdmin\\ConfigStorage\\Features\\BookmarkFeature\|null given\.$#'
-			identifier: argument.type
-			count: 1
 			path: src/Bookmarks/BookmarkRepository.php
 
 		-
@@ -313,7 +298,7 @@ parameters:
 			path: src/Config.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\<mixed\>\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\<mixed\>\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Config.php
@@ -970,7 +955,7 @@ parameters:
 			path: src/Config/UserPreferencesHandler.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Config/UserPreferencesHandler.php
@@ -1017,6 +1002,12 @@ parameters:
 		-
 			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
 			identifier: equal.notAllowed
+			count: 1
+			path: src/Config/Validator.php
+
+		-
+			message: '#^Offset ''Servers/1…'' on non\-empty\-array\<mixed\> in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.offset
 			count: 1
 			path: src/Config/Validator.php
 
@@ -1204,24 +1195,6 @@ parameters:
 			path: src/ConfigStorage/Relation.php
 
 		-
-			message: '#^Offset ''bookmarktable''\|''central_columns''\|''column_info''\|''designer_settings''\|''export_templates''\|''favorite''\|''history''\|''navigationhiding''\|''pdf_pages''\|''recent''\|''relation''\|''savedsearches''\|''table_coords''\|''table_info''\|''table_uiprefs''\|''tracking''\|''userconfig''\|''usergroups''\|''users'' on array\{host\: string, port\: string, socket\: string, ssl\: bool, ssl_key\: string\|null, ssl_cert\: string\|null, ssl_ca\: string\|null, ssl_ca_path\: string\|null, \.\.\.\} in isset\(\) always exists and is not nullable\.$#'
-			identifier: isset.offset
-			count: 1
-			path: src/ConfigStorage/Relation.php
-
-		-
-			message: '#^Offset ''bookmarktable''\|''central_columns''\|''column_info''\|''designer_settings''\|''export_templates''\|''favorite''\|''history''\|''navigationhiding''\|''recent''\|''relation''\|''savedsearches''\|''table_uiprefs''\|''tracking''\|''userconfig'' on array\{host\: string, port\: string, socket\: string, ssl\: bool, ssl_key\: string\|null, ssl_cert\: string\|null, ssl_ca\: string\|null, ssl_ca_path\: string\|null, \.\.\.\} in isset\(\) always exists and is not nullable\.$#'
-			identifier: isset.offset
-			count: 1
-			path: src/ConfigStorage/Relation.php
-
-		-
-			message: '#^Offset ''pdf_pages''\|''relation''\|''table_coords''\|''table_info''\|''usergroups''\|''users'' on array\{host\: string, port\: string, socket\: string, ssl\: bool, ssl_key\: string\|null, ssl_cert\: string\|null, ssl_ca\: string\|null, ssl_ca_path\: string\|null, \.\.\.\} in isset\(\) always exists and is not nullable\.$#'
-			identifier: isset.offset
-			count: 1
-			path: src/ConfigStorage/Relation.php
-
-		-
 			message: '#^Only booleans are allowed in &&, PhpMyAdmin\\Dbal\\ResultInterface\|false given on the left side\.$#'
 			identifier: booleanAnd.leftNotBoolean
 			count: 2
@@ -1294,10 +1267,10 @@ parameters:
 			path: src/ConfigStorage/Relation.php
 
 		-
-			message: '#^Only booleans are allowed in &&, mixed given on the right side\.$#'
-			identifier: booleanAnd.rightNotBoolean
-			count: 18
-			path: src/ConfigStorage/RelationParameters.php
+			message: '#^Property PhpMyAdmin\\ConfigStorage\\Relation\:\:\$config in isset\(\) is not nullable nor uninitialized\.$#'
+			identifier: isset.initializedProperty
+			count: 3
+			path: src/ConfigStorage/Relation.php
 
 		-
 			message: '''
@@ -1918,18 +1891,6 @@ parameters:
 			path: src/Controllers/HomeController.php
 
 		-
-			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
-			identifier: equal.notAllowed
-			count: 1
-			path: src/Controllers/HomeController.php
-
-		-
-			message: '#^Only booleans are allowed in &&, string\|false given on the right side\.$#'
-			identifier: booleanAnd.rightNotBoolean
-			count: 1
-			path: src/Controllers/HomeController.php
-
-		-
 			message: '#^Only booleans are allowed in \|\|, string\|false given on the right side\.$#'
 			identifier: booleanOr.rightNotBoolean
 			count: 1
@@ -2470,6 +2431,12 @@ parameters:
 			path: src/Controllers/Server/Status/VariablesController.php
 
 		-
+			message: '#^Cannot access an offset on bool\|float\|int\|list\<array\<string, array\<string, string\>\|string\>\>\|string\|null\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Controllers/Server/Status/VariablesController.php
+
+		-
 			message: '#^Only booleans are allowed in a negated boolean, mixed given\.$#'
 			identifier: booleanNot.exprNotBoolean
 			count: 1
@@ -2522,18 +2489,6 @@ parameters:
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Controllers/Sql/RelationalValuesController.php
-
-		-
-			message: '#^Loose comparison via "\!\=" is not allowed\.$#'
-			identifier: notEqual.notAllowed
-			count: 3
-			path: src/Controllers/Sql/SqlController.php
-
-		-
-			message: '#^Only booleans are allowed in an if condition, bool\|null given\.$#'
-			identifier: if.condNotBoolean
-			count: 1
-			path: src/Controllers/Sql/SqlController.php
 
 		-
 			message: '#^Parameter \#2 \$signature of static method PhpMyAdmin\\Core\:\:checkSqlQuerySignature\(\) expects string, mixed given\.$#'
@@ -3184,12 +3139,6 @@ parameters:
 			path: src/Controllers/Table/SearchController.php
 
 		-
-			message: '#^Parameter \#1 \$type of method PhpMyAdmin\\Types\:\:getIntegerRange\(\) expects string, string\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Controllers/Table/SearchController.php
-
-		-
 			message: '#^Parameter \#1 \$type of method PhpMyAdmin\\Types\:\:getTypeOperatorsHtml\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -3367,12 +3316,6 @@ parameters:
 			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
 			identifier: equal.notAllowed
 			count: 2
-			path: src/Controllers/Table/Structure/SaveController.php
-
-		-
-			message: '#^Only booleans are allowed in an if condition, mixed given\.$#'
-			identifier: if.condNotBoolean
-			count: 1
 			path: src/Controllers/Table/Structure/SaveController.php
 
 		-
@@ -3689,12 +3632,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$string of function strtoupper expects string, string\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Controllers/Table/ZoomSearchController.php
-
-		-
-			message: '#^Parameter \#1 \$type of method PhpMyAdmin\\Types\:\:getIntegerRange\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Controllers/Table/ZoomSearchController.php
@@ -4687,12 +4624,6 @@ parameters:
 			path: src/Database/Routines.php
 
 		-
-			message: '#^Parameter \#2 \$array of function implode expects array, list\<string\|null\>\|string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Database/Routines.php
-
-		-
 			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, array\<mixed, mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
@@ -4801,6 +4732,12 @@ parameters:
 			path: src/Dbal/DatabaseInterface.php
 
 		-
+			message: '#^Cannot assign new offset to array\<string\|null\>\|string\|null\.$#'
+			identifier: offsetAssign.dimType
+			count: 1
+			path: src/Dbal/DatabaseInterface.php
+
+		-
 			message: '#^Cannot cast mixed to string\.$#'
 			identifier: cast.string
 			count: 1
@@ -4815,6 +4752,12 @@ parameters:
 		-
 			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
 			identifier: empty.notAllowed
+			count: 1
+			path: src/Dbal/DatabaseInterface.php
+
+		-
+			message: '#^Method PhpMyAdmin\\Dbal\\DatabaseInterface\:\:fetchResultMultidimensional\(\) should return array\<mixed\> but returns array\<string\|null\>\|string\|null\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Dbal/DatabaseInterface.php
 
@@ -4845,12 +4788,6 @@ parameters:
 		-
 			message: '#^Method PhpMyAdmin\\Dbal\\DatabaseInterface\:\:getTableIndexes\(\) should return array\<int, array\{Table\: string, Non_unique\: ''0''\|''1'', Key_name\: string, Seq_in_index\: string, Column_name\: string\|null, Collation\: ''A''\|''D''\|null, Cardinality\: string, Sub_part\: string\|null, \.\.\.\}\> but returns list\<array\<string\|null\>\>\.$#'
 			identifier: return.type
-			count: 1
-			path: src/Dbal/DatabaseInterface.php
-
-		-
-			message: '#^Offset string\|null on array\{\} in isset\(\) does not exist\.$#'
-			identifier: isset.offset
 			count: 1
 			path: src/Dbal/DatabaseInterface.php
 
@@ -5009,18 +4946,6 @@ parameters:
 
 		-
 			message: '#^Access to an undefined property PhpMyAdmin\\SqlParser\\Statement\:\:\$where\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/Display/Results.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$column\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/Display/Results.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$database\.$#'
 			identifier: property.notFound
 			count: 1
 			path: src/Display/Results.php
@@ -5499,7 +5424,7 @@ parameters:
 				Use dependency injection instead\.$#
 			'''
 			identifier: staticMethod.deprecated
-			count: 5
+			count: 4
 			path: src/Engines/Innodb.php
 
 		-
@@ -5584,12 +5509,6 @@ parameters:
 			path: src/Error/Error.php
 
 		-
-			message: '#^Cannot access offset mixed on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: src/Error/Error.php
-
-		-
 			message: '#^Only booleans are allowed in \|\|, int\<0, 18176\> given on the right side\.$#'
 			identifier: booleanOr.rightNotBoolean
 			count: 1
@@ -5616,6 +5535,12 @@ parameters:
 		-
 			message: '#^Parameter \#2 \$function of static method PhpMyAdmin\\Error\\Error\:\:getArg\(\) expects string, mixed given\.$#'
 			identifier: argument.type
+			count: 1
+			path: src/Error/Error.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
 			count: 1
 			path: src/Error/Error.php
 
@@ -5931,12 +5856,6 @@ parameters:
 		-
 			message: '#^Call to function in_array\(\) requires parameter \#3 to be true\.$#'
 			identifier: function.strict
-			count: 1
-			path: src/Favorites/RecentFavoriteTables.php
-
-		-
-			message: '#^Cannot access an offset on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Favorites/RecentFavoriteTables.php
 
@@ -6450,7 +6369,13 @@ parameters:
 		-
 			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 8
+			count: 6
+			path: src/Gis/GisMultiPolygon.php
+
+		-
+			message: '#^Cannot access offset int\<0, max\> on non\-empty\-array\<''data_length''\|int\<0, max\>, array\{x\: float, y\: float\}\|int\<0, max\>\>\|int\<1, max\>\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
 			path: src/Gis/GisMultiPolygon.php
 
 		-
@@ -6844,18 +6769,6 @@ parameters:
 			path: src/Header.php
 
 		-
-			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
-			identifier: empty.notAllowed
-			count: 1
-			path: src/Header.php
-
-		-
-			message: '#^Parameter \#1 \$message of static method PhpMyAdmin\\Html\\Generator\:\:getMessage\(\) expects PhpMyAdmin\\Message\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Header.php
-
-		-
 			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
@@ -7104,7 +7017,7 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to string\.$#'
 			identifier: cast.string
-			count: 7
+			count: 4
 			path: src/Import/Import.php
 
 		-
@@ -8512,7 +8425,7 @@ parameters:
 			path: src/Plugins/Auth/AuthenticationSignon.php
 
 		-
-			message: '#^Parameter \#1 \$options of function session_set_cookie_params expects array\{lifetime\?\: int, path\?\: string\|null, domain\?\: string\|null, secure\?\: bool\|null, httponly\?\: bool\|null, samesite\?\: ''Lax''\|''lax''\|''None''\|''none''\|''Strict''\|''strict''\}, array\<mixed\> given\.$#'
+			message: '#^Parameter \#1 \$options of function session_set_cookie_params expects array\{lifetime\?\: int, path\?\: string\|null, domain\?\: string\|null, secure\?\: bool\|null, httponly\?\: bool\|null, samesite\?\: ''Lax''\|''lax''\|''None''\|''none''\|''Strict''\|''strict''\}, non\-empty\-array\<mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Plugins/Auth/AuthenticationSignon.php
@@ -13531,18 +13444,6 @@ parameters:
 			path: tests/config.e2e.inc.php
 
 		-
-			message: '#^Cannot access offset ''auth_type'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: tests/config.e2e.inc.php
-
-		-
-			message: '#^Cannot access offset ''host'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: tests/config.e2e.inc.php
-
-		-
 			message: '#^Cannot access offset ''verbose'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -13831,24 +13732,6 @@ parameters:
 			path: tests/unit/Advisory/RulesTest.php
 
 		-
-			message: '''
-				#^Call to deprecated method getInstance\(\) of class PhpMyAdmin\\Config\:
-				Use dependency injection instead\.$#
-			'''
-			identifier: staticMethod.deprecated
-			count: 3
-			path: tests/unit/Bookmarks/BookmarkTest.php
-
-		-
-			message: '''
-				#^Call to deprecated method getInstance\(\) of class PhpMyAdmin\\Dbal\\DatabaseInterface\:
-				Use dependency injection instead\.$#
-			'''
-			identifier: staticMethod.deprecated
-			count: 3
-			path: tests/unit/Bookmarks/BookmarkTest.php
-
-		-
 			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertStringContainsString\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 3
@@ -13924,31 +13807,25 @@ parameters:
 			path: tests/unit/Config/ConfigFileTest.php
 
 		-
-			message: '#^Argument of an invalid type array\<array\<string\>\|bool\|int\<0, max\>\|string\>\|bool\|int\<1, max\>\|string\|null supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: tests/unit/Config/DescriptionTest.php
-
-		-
 			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
 			identifier: function.strict
 			count: 1
 			path: tests/unit/Config/DescriptionTest.php
 
 		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<int\<1, max\>, non\-empty\-array\<''AllowDeny''\|''AllowNoPassword''\|''AllowRoot''\|''auth_http_realm''\|''auth_type''\|''bookmarktable''\|''central_columns''\|''column_info''\|''compress''\|''control_compress''\|''control_hide…''\|''control_socket''\|''control_ssl''\|''control_ssl_ca''\|''control_ssl_ca_path''\|''control_ssl_cert''\|''control_ssl_ciphers''\|''control_ssl_key''\|''control_ssl_verify''\|''controlhost''\|''controlpass''\|''controlport''\|''controluser''\|''designer_settings''\|''DisableIS''\|''export_templates''\|''favorite''\|''hide_db''\|''history''\|''host''\|''LogoutURL''\|''MaxTableUiprefs''\|''navigationhiding''\|''only_db''\|''password''\|''pdf_pages''\|''pmadb''\|''port''\|''recent''\|''relation''\|''savedsearches''\|''SessionTimeZone''\|''SignonCookieParams''\|''SignonScript''\|''SignonSession''\|''SignonURL''\|''socket''\|''ssl''\|''ssl_ca''\|''ssl_ca_path''\|''ssl_cert''\|''ssl_ciphers''\|''ssl_key''\|''ssl_verify''\|''table_coords''\|''table_info''\|''table_uiprefs''\|''tracking''\|''user''\|''userconfig''\|''usergroups''\|''users''\|''verbose'', array\<array\<string\>\|bool\|int\<0, max\>\|string\>\|bool\|int\<1, max\>\|string\|null\>\> will always evaluate to true\.$#'
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<int\<1, max\>, array\{host\: string, port\: string, socket\: string, ssl\: bool, ssl_key\: string\|null, ssl_cert\: string\|null, ssl_ca\: string\|null, ssl_ca_path\: string\|null, \.\.\.\}\> will always evaluate to true\.$#'
 			identifier: staticMethod.alreadyNarrowedType
 			count: 1
 			path: tests/unit/Config/DescriptionTest.php
 
 		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with non\-empty\-array\<''AllowDeny''\|''AllowNoPassword''\|''AllowRoot''\|''auth_http_realm''\|''auth_type''\|''bookmarktable''\|''central_columns''\|''column_info''\|''compress''\|''control_compress''\|''control_hide…''\|''control_socket''\|''control_ssl''\|''control_ssl_ca''\|''control_ssl_ca_path''\|''control_ssl_cert''\|''control_ssl_ciphers''\|''control_ssl_key''\|''control_ssl_verify''\|''controlhost''\|''controlpass''\|''controlport''\|''controluser''\|''designer_settings''\|''DisableIS''\|''export_templates''\|''favorite''\|''hide_db''\|''history''\|''host''\|''LogoutURL''\|''MaxTableUiprefs''\|''navigationhiding''\|''only_db''\|''password''\|''pdf_pages''\|''pmadb''\|''port''\|''recent''\|''relation''\|''savedsearches''\|''SessionTimeZone''\|''SignonCookieParams''\|''SignonScript''\|''SignonSession''\|''SignonURL''\|''socket''\|''ssl''\|''ssl_ca''\|''ssl_ca_path''\|''ssl_cert''\|''ssl_ciphers''\|''ssl_key''\|''ssl_verify''\|''table_coords''\|''table_info''\|''table_uiprefs''\|''tracking''\|''user''\|''userconfig''\|''usergroups''\|''users''\|''verbose'', array\<array\<string\>\|bool\|int\<0, max\>\|string\>\|bool\|int\<1, max\>\|string\|null\> will always evaluate to true\.$#'
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\{host\: string, port\: string, socket\: string, ssl\: bool, ssl_key\: string\|null, ssl_cert\: string\|null, ssl_ca\: string\|null, ssl_ca_path\: string\|null, \.\.\.\} will always evaluate to true\.$#'
 			identifier: staticMethod.alreadyNarrowedType
 			count: 1
 			path: tests/unit/Config/DescriptionTest.php
 
 		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with array\<string\>\|bool\|int\<0, max\>\|string will always evaluate to true\.$#'
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with ''''\|''allow,deny''\|''deny,allow''\|''explicit''\|array\<string\> will always evaluate to true\.$#'
 			identifier: staticMethod.alreadyNarrowedType
 			count: 1
 			path: tests/unit/Config/DescriptionTest.php
@@ -14032,63 +13909,75 @@ parameters:
 			path: tests/unit/Config/PageSettingsTest.php
 
 		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) with ''notice'' and array\{blowfish_secret\: ''aaaaaaaaaaaaaaaaaaa…'', Servers\: array\{1\: array\{host\: ''localhost'', auth_type\: ''cookie''\}\}\} will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 1
+			path: tests/unit/Config/ServerConfigChecksTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) with ''notice'' and array\{blowfish_secret\: ''aaaaaaaaaaaaaaaaaaa…'', Servers\: array\{1\: array\{host\: ''localhost'', ssl\: true, auth_type\: ''cookie'', AllowRoot\: false\}\}\} will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 1
+			path: tests/unit/Config/ServerConfigChecksTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) with ''notice'' and array\{blowfish_secret\: null, Servers\: array\{1\: array\{host\: ''localhost'', ssl\: true, auth_type\: ''cookie'', AllowRoot\: false\}\}, AllowArbitraryServer\: false, LoginCookieValidity\: \-1, LoginCookieStore\: 0, SaveDir\: '''', TempDir\: '''', GZipDump\: false, \.\.\.\} will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 1
+			path: tests/unit/Config/ServerConfigChecksTest.php
+
+		-
 			message: '#^Cannot access offset ''AllowArbitraryServer'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''BZipDump'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''GZipDump'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''LoginCookieStore'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''LoginCookieValidity'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''SaveDir'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''Servers'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 4
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''TempDir'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
 			message: '#^Cannot access offset ''ZipDump'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: tests/unit/Config/ServerConfigChecksTest.php
-
-		-
-			message: '#^Cannot access offset ''blowfish_secret'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 3
+			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
 		-
@@ -14100,6 +13989,24 @@ parameters:
 		-
 			message: '#^Cannot access offset ''notice'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/unit/Config/ServerConfigChecksTest.php
+
+		-
+			message: '#^Offset ''blowfish_secret'' on array\{blowfish_secret\: ''aaaaaaaaaaaaaaaaaaa…'', Servers\: array\{1\: array\{host\: ''localhost'', auth_type\: ''cookie''\}\}\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: tests/unit/Config/ServerConfigChecksTest.php
+
+		-
+			message: '#^Offset ''blowfish_secret'' on array\{blowfish_secret\: ''aaaaaaaaaaaaaaaaaaa…'', Servers\: array\{1\: array\{host\: ''localhost'', ssl\: true, auth_type\: ''cookie'', AllowRoot\: false\}\}\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: tests/unit/Config/ServerConfigChecksTest.php
+
+		-
+			message: '#^Offset ''blowfish_secret'' on array\{blowfish_secret\: null, Servers\: array\{1\: array\{host\: ''localhost'', ssl\: true, auth_type\: ''cookie'', AllowRoot\: false\}\}, AllowArbitraryServer\: false, LoginCookieValidity\: \-1, LoginCookieStore\: 0, SaveDir\: '''', TempDir\: '''', GZipDump\: false, \.\.\.\} on left side of \?\? always exists and is always null\.$#'
+			identifier: nullCoalesce.offset
 			count: 1
 			path: tests/unit/Config/ServerConfigChecksTest.php
 
@@ -14230,7 +14137,7 @@ parameters:
 			path: tests/unit/Config/UserPreferencesTest.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\{''Server/hide_db''\: ''testval123'', ''Server/port''\: ''213''\}\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\{''Server/hide_db''\: ''testval123'', ''Server/port''\: ''213''\}\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: tests/unit/Config/UserPreferencesTest.php
@@ -14315,15 +14222,6 @@ parameters:
 			identifier: staticMethod.deprecated
 			count: 1
 			path: tests/unit/Controllers/CheckRelationsControllerTest.php
-
-		-
-			message: '''
-				#^Call to deprecated method getInstance\(\) of class PhpMyAdmin\\Config\:
-				Use dependency injection instead\.$#
-			'''
-			identifier: staticMethod.deprecated
-			count: 2
-			path: tests/unit/Controllers/Console/Bookmark/AddControllerTest.php
 
 		-
 			message: '''
@@ -15054,7 +14952,7 @@ parameters:
 				Use dependency injection instead\.$#
 			'''
 			identifier: staticMethod.deprecated
-			count: 1
+			count: 2
 			path: tests/unit/Controllers/Table/ExportControllerTest.php
 
 		-
@@ -15708,7 +15606,7 @@ parameters:
 				Use dependency injection instead\.$#
 			'''
 			identifier: staticMethod.deprecated
-			count: 12
+			count: 9
 			path: tests/unit/Html/GeneratorTest.php
 
 		-
@@ -16108,7 +16006,7 @@ parameters:
 			path: tests/unit/Plugins/Auth/AuthenticationConfigTest.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: tests/unit/Plugins/Auth/AuthenticationConfigTest.php
@@ -16165,7 +16063,7 @@ parameters:
 			path: tests/unit/Plugins/Auth/AuthenticationCookieTest.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\.$#'
 			identifier: assign.propertyType
 			count: 6
 			path: tests/unit/Plugins/Auth/AuthenticationCookieTest.php
@@ -16186,7 +16084,7 @@ parameters:
 			path: tests/unit/Plugins/Auth/AuthenticationHttpTest.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\.$#'
 			identifier: assign.propertyType
 			count: 2
 			path: tests/unit/Plugins/Auth/AuthenticationHttpTest.php
@@ -16387,7 +16285,7 @@ parameters:
 			path: tests/unit/PluginsTest.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: tests/unit/PluginsTest.php
@@ -16516,7 +16414,7 @@ parameters:
 			path: tests/unit/Server/SelectTest.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: tests/unit/Server/SelectTest.php
@@ -16575,7 +16473,7 @@ parameters:
 				Use dependency injection instead\.$#
 			'''
 			identifier: staticMethod.deprecated
-			count: 4
+			count: 3
 			path: tests/unit/SqlTest.php
 
 		-
@@ -16734,7 +16632,7 @@ parameters:
 				Use dependency injection instead\.$#
 			'''
 			identifier: staticMethod.deprecated
-			count: 6
+			count: 5
 			path: tests/unit/TwoFactorTest.php
 
 		-
@@ -16930,7 +16828,7 @@ parameters:
 			path: tests/unit/VersionInformationTest.php
 
 		-
-			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, SuhosinDisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, \.\.\.\}\.$#'
+			message: '#^Property PhpMyAdmin\\Config\:\:\$settings \(array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\) does not accept array\{PmaAbsoluteUri\: string, AuthLog\: string, AuthLogSuccess\: bool, PmaNoRelation_DisableWarning\: bool, LoginCookieValidityDisableWarning\: bool, ReservedWordDisableWarning\: bool, TranslationWarningThreshold\: int, AllowThirdPartyFraming\: ''sameorigin''\|bool, \.\.\.\}\.$#'
 			identifier: assign.propertyType
 			count: 3
 			path: tests/unit/VersionInformationTest.php

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="6.15.0@204d06619833a297b402cbc66be7f2df74437db4">
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
   <file src="src/Advisory/Advisor.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$pattern]]></code>
@@ -30,17 +30,11 @@
     </PossiblyUnusedReturnValue>
   </file>
   <file src="src/Bookmarks/BookmarkRepository.php">
-    <DeprecatedMethod>
-      <code><![CDATA[Config::getInstance()]]></code>
-    </DeprecatedMethod>
     <InvalidArgument>
       <code><![CDATA[$result]]></code>
       <code><![CDATA[$result]]></code>
       <code><![CDATA[$row]]></code>
     </InvalidArgument>
-    <PossiblyNullArgument>
-      <code><![CDATA[$this->bookmarkFeature]]></code>
-    </PossiblyNullArgument>
   </file>
   <file src="src/Cache.php">
     <MixedAssignment>
@@ -1255,7 +1249,6 @@
       <code><![CDATA[empty($this->config->selectedServer['verbose'])]]></code>
       <code><![CDATA[empty($this->config->settings['Servers'][Current::$server]['pmadb'])]]></code>
       <code><![CDATA[ini_get('allow_url_fopen')]]></code>
-      <code><![CDATA[ini_get('suhosin.request.max_value_length')]]></code>
     </RiskyTruthyFalsyComparison>
     <UnusedVariable>
       <code><![CDATA[$collationsList]]></code>
@@ -2128,24 +2121,12 @@
     </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Controllers/Table/ExportController.php">
-    <MixedArgument>
-      <code><![CDATA[Current::$database]]></code>
-      <code><![CDATA[Current::$table]]></code>
-    </MixedArgument>
     <MixedArgumentTypeCoercion>
       <code><![CDATA[Current::$whereClause]]></code>
     </MixedArgumentTypeCoercion>
-    <MixedPropertyTypeCoercion>
-      <code><![CDATA[UrlParams::$params]]></code>
-      <code><![CDATA[UrlParams::$params]]></code>
-      <code><![CDATA[['db' => Current::$database, 'table' => Current::$table]]]></code>
-    </MixedPropertyTypeCoercion>
     <PossiblyNullArgument>
       <code><![CDATA[$parser->list]]></code>
     </PossiblyNullArgument>
-    <PossiblyUnusedReturnValue>
-      <code><![CDATA[Response]]></code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="src/Controllers/Table/ExportRowsController.php">
     <InvalidPropertyAssignmentValue>
@@ -3872,7 +3853,6 @@
       <code><![CDATA[DatabaseInterface::getInstance()]]></code>
       <code><![CDATA[DatabaseInterface::getInstance()]]></code>
       <code><![CDATA[DatabaseInterface::getInstance()]]></code>
-      <code><![CDATA[DatabaseInterface::getInstance()]]></code>
     </DeprecatedMethod>
   </file>
   <file src="src/Engines/Pbxt.php">
@@ -4619,12 +4599,6 @@
     <MixedAssignment>
       <code><![CDATA[$pftext]]></code>
     </MixedAssignment>
-    <PossiblyInvalidArgument>
-      <code><![CDATA[$message]]></code>
-    </PossiblyInvalidArgument>
-    <RiskyTruthyFalsyComparison>
-      <code><![CDATA[empty($_REQUEST['message'])]]></code>
-    </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Html/Generator.php">
     <DeprecatedMethod>
@@ -4869,9 +4843,6 @@
       <code><![CDATA[$lastCumulativeSize->scale]]></code>
       <code><![CDATA[$lastCumulativeSize->scale]]></code>
     </PossiblyInvalidPropertyFetch>
-    <PossiblyUndefinedArrayOffset>
-      <code><![CDATA[$row[$columnIndex]]]></code>
-    </PossiblyUndefinedArrayOffset>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[ImportSettings::$runQuery]]></code>
     </RiskyTruthyFalsyComparison>
@@ -8056,12 +8027,12 @@
       <code><![CDATA[$statement->altered]]></code>
       <code><![CDATA[$statement->altered]]></code>
     </PossiblyNullIterator>
+    <PossiblyUndefinedVariable>
+      <code><![CDATA[$maintainRelations]]></code>
+    </PossiblyUndefinedVariable>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[! $relationParams[$work]]]></code>
     </RiskyTruthyFalsyComparison>
-    <UnusedVariable>
-      <code><![CDATA[$maintainRelations]]></code>
-    </UnusedVariable>
   </file>
   <file src="src/Theme/Theme.php">
     <MixedArgument>
@@ -8646,16 +8617,6 @@
       <code><![CDATA[testAdvisorBytime]]></code>
     </PossiblyInvalidArgument>
   </file>
-  <file src="tests/unit/Bookmarks/BookmarkTest.php">
-    <DeprecatedMethod>
-      <code><![CDATA[Config::getInstance()]]></code>
-      <code><![CDATA[Config::getInstance()]]></code>
-      <code><![CDATA[Config::getInstance()]]></code>
-      <code><![CDATA[DatabaseInterface::getInstance()]]></code>
-      <code><![CDATA[DatabaseInterface::getInstance()]]></code>
-      <code><![CDATA[DatabaseInterface::getInstance()]]></code>
-    </DeprecatedMethod>
-  </file>
   <file src="tests/unit/BrowseForeignersTest.php">
     <MixedArgument>
       <code><![CDATA[$result]]></code>
@@ -9019,12 +8980,6 @@
   </file>
   <file src="tests/unit/Controllers/CheckRelationsControllerTest.php">
     <DeprecatedMethod>
-      <code><![CDATA[Config::getInstance()]]></code>
-    </DeprecatedMethod>
-  </file>
-  <file src="tests/unit/Controllers/Console/Bookmark/AddControllerTest.php">
-    <DeprecatedMethod>
-      <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
     </DeprecatedMethod>
   </file>
@@ -9430,6 +9385,7 @@
   </file>
   <file src="tests/unit/Controllers/Table/ExportControllerTest.php">
     <DeprecatedMethod>
+      <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
     </DeprecatedMethod>
   </file>
@@ -9851,9 +9807,6 @@
   </file>
   <file src="tests/unit/Html/GeneratorTest.php">
     <DeprecatedMethod>
-      <code><![CDATA[Config::getInstance()]]></code>
-      <code><![CDATA[Config::getInstance()]]></code>
-      <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
@@ -10394,7 +10347,6 @@
       <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
-      <code><![CDATA[Config::getInstance()]]></code>
     </DeprecatedMethod>
     <MixedArrayAssignment>
       <code><![CDATA[$_SESSION['tmpval']['max_rows']]]></code>
@@ -10521,7 +10473,6 @@
   </file>
   <file src="tests/unit/TwoFactorTest.php">
     <DeprecatedMethod>
-      <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>
       <code><![CDATA[Config::getInstance()]]></code>

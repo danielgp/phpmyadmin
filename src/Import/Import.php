@@ -121,7 +121,7 @@ final class Import
 
             ImportSettings::$message .= __('Error');
 
-            if (! $this->config->settings['IgnoreMultiSubmitErrors']) {
+            if (! $this->config->config->IgnoreMultiSubmitErrors) {
                 self::$hasError = true;
 
                 return;
@@ -775,7 +775,7 @@ final class Import
                         $size = 10;
                     }
 
-                    $tempSQLStr .= Util::backquote($column) . ' ' . match ($analyses[$i][$j]->type) {
+                    $colType = match ($analyses[$i][$j]->type) {
                         ColumnType::None => 'NULL',
                         ColumnType::Varchar => 'varchar',
                         ColumnType::Int => 'int',
@@ -783,7 +783,17 @@ final class Import
                         ColumnType::BigInt => 'bigint',
                         ColumnType::Geometry => 'geometry',
                     };
-                    if ($analyses[$i][$j]->type !== ColumnType::Geometry) {
+
+                    // Use TEXT instead of VARCHAR when the length exceeds
+                    // the maximum allowed for VARCHAR. The limit depends on
+                    // the charset (e.g. 16383 for utf8mb4, 65535 for latin1).
+                    // We use the most restrictive limit (utf8mb4) to be safe.
+                    if ($colType === 'varchar' && $size > 16383) {
+                        $colType = 'text';
+                    }
+
+                    $tempSQLStr .= Util::backquote($column) . ' ' . $colType;
+                    if ($colType !== 'text' && $analyses[$i][$j]->type !== ColumnType::Geometry) {
                         $tempSQLStr .= '(' . $size . ')';
                     }
 
@@ -844,21 +854,21 @@ final class Import
                     ) {
                         $tempSQLStr .= (string) $row[$columnIndex];
                     } else {
+                        $value = (string) $row[$columnIndex];
                         if ($analyses !== null) {
                             $isVarchar = $analyses[$tableIndex][$columnIndex]->type === ColumnType::Varchar;
                         } else {
-                            $isVarchar = ! is_numeric($row[$columnIndex])
-                                && ! preg_match('/^0x[0-9a-f]+$/', (string) $row[$columnIndex]);
+                            $isVarchar = ! preg_match('/^0x[0-9a-f]+$/', $value)
+                                && $value !== (string) (int) $value
+                                && $value !== (string) (float) $value;
                         }
 
                         /* Don't put quotes around NULL fields */
-                        if ((string) $row[$columnIndex] === 'NULL') {
+                        if ($value === 'NULL') {
                             $isVarchar = false;
                         }
 
-                        $tempSQLStr .= $isVarchar
-                            ? $this->dbi->quoteString((string) $row[$columnIndex])
-                            : (string) $row[$columnIndex];
+                        $tempSQLStr .= $isVarchar ? $this->dbi->quoteString($value) : $value;
                     }
 
                     if ($columnIndex === $lastColumnKey) {

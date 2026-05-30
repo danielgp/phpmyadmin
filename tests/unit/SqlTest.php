@@ -60,7 +60,7 @@ class SqlTest extends AbstractTestCase
             new RelationCleanup($this->dbi, $relation),
             new Transformations($this->dbi, $relation),
             new Template($config),
-            new BookmarkRepository($this->dbi, $relation),
+            new BookmarkRepository($this->dbi, $relation, $config),
             $config,
             new ResponseRenderer(),
         );
@@ -89,9 +89,6 @@ class SqlTest extends AbstractTestCase
      */
     public function testIsRememberSortingOrder(): void
     {
-        // Test environment.
-        Config::getInstance()->settings['RememberSorting'] = true;
-
         self::assertTrue(
             (new ReflectionMethod(Sql::class, 'isRememberSortingOrder'))->invokeArgs($this->sql, [
                 ParseAnalyze::sqlQuery('SELECT * FROM tbl', Current::$database, false)[0],
@@ -378,14 +375,14 @@ class SqlTest extends AbstractTestCase
                 ['max_rows' => 10, 'pos' => 4],
                 20,
                 42,
-
+                false,
+                'SELECT COUNT(*) FROM (SELECT 1 FROM company_users WHERE subquery_case = 0 ) as cnt',
             ],
             [
                 'SELECT ( as c2 FROM company_users WHERE working_count = 0',// Invalid query
                 ['max_rows' => 10],
                 20,
                 20,
-
             ],
             [
                 'SELECT DISTINCT country_id FROM city;',
@@ -410,6 +407,14 @@ class SqlTest extends AbstractTestCase
                 100,
                 false,
                 'SELECT COUNT(*) FROM (SELECT 1 FROM t1 WHERE id <> 0 ) as cnt',
+            ],
+            'duplicate column alias should not break count' => [
+                'SELECT id, name AS id FROM company_users WHERE working_count = 0',
+                ['max_rows' => 10, 'pos' => 0],
+                25,
+                384,
+                false,
+                'SELECT COUNT(*) FROM (SELECT 1 FROM company_users WHERE working_count = 0 ) as cnt',
             ],
         ];
     }
@@ -662,7 +667,7 @@ class SqlTest extends AbstractTestCase
             new RelationCleanup($this->dbi, $relation),
             new Transformations($this->dbi, $relation),
             new Template($config),
-            new BookmarkRepository($this->dbi, $relation),
+            new BookmarkRepository($this->dbi, $relation, $config),
             $config,
             new ResponseRenderer(),
         );
